@@ -5,8 +5,6 @@
 #
 
 %global epics_prefix /opt/epics/base
-# %define debug_package %{nil}
-# %define __os_install_post %{nil}
 
 Name:			epics-base
 Version:		3.15.6
@@ -26,7 +24,6 @@ EPICS is a software toolkit for building control system for physics facilities
 such as synchrotron light sources.
 
 %prep
-# %setup -q -n epics-base-3.15.6
 %autosetup
 
 %build

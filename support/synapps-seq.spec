@@ -1,10 +1,11 @@
 # 
-# Sequencers 2.2.8 EPICS support
+# Sequencers EPICS support
 #
 # Author: Abdalla Al-Dalleh <abdalla.ahmad@sesame.org.jo>
 #
 
 %global epics_prefix /opt/epics/support/seq
+%global _version 2.2.8
 
 Name:			synapps-seq
 Version:		2.2
@@ -13,7 +14,7 @@ Summary:		SNL Sequencers support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		synapps-seq-2.2.8.tar.gz
+Source0:		synapps-seq-%{_version}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -21,10 +22,9 @@ Requires:		epics-base
 State notation language sequencers support for EPICS
 
 %prep
-%setup -q -n synapps-seq-2.2.8
+%setup -q -n synapps-seq-%{_version}
 
 %build
-# make %{_smp_mflags}
 
 %install
 
@@ -103,5 +103,5 @@ rm -rf %{buildroot}
 %attr(0755,root,root) /usr/bin/sncExOpt
 
 %changelog
-* Tue Apr 09 2019 Abdalla Al-Dalleh 2.2-6
-  - Added version 2.2-6
+* Tue May 04 2021 Abdalla Al-Dalleh 2.2.8
+  - New build sequence.

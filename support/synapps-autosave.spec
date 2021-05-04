@@ -1,13 +1,11 @@
 # 
-# Autosave 5.10.2 EPICS support
+# Autosave EPICS support
 #
 # Author: Abdalla Al-Dalleh <abdalla.ahmad@sesame.org.jo>
 #
 
 %global epics_prefix /opt/epics/support/autosave
-
-# %define debug_package %{nil}
-# %define __os_install_post %{nil}
+%global _version 5.10.2
 
 Name:			synapps-autosave
 Version:		5.10
@@ -16,7 +14,7 @@ Summary:		Autosave support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		synapps-autosave-%{version}.2.tar.gz
+Source0:		synapps-autosave-%{_version}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -24,11 +22,9 @@ Requires:		epics-base
 Autosave support for EPICS
 
 %prep
-%setup -q -n synapps-autosave-%{version}.2
+%setup -q -n synapps-autosave-%{_version}
 
 %build
-# mkdir -p /opt/epics/support/autosave
-# make INSTALL_LOCATION=/opt/epics/support/autosave %{_smp_mflags}
 
 %install
 
@@ -54,14 +50,6 @@ export QA_SKIP_BUILD_ROOT=1
 %clean
 rm -rf %{buildroot}
 
-# mkdir -p $RPM_BUILD_ROOT/opt/epics/support/autosave
-# mkdir -p $RPM_BUILD_ROOT/usr/local/lib64/
-# mkdir -p $RPM_BUILD_ROOT/usr/local/bin/
-# cp -a /opt/epics/support/autosave/* $RPM_BUILD_ROOT/opt/epics/support/autosave
-# cp -a /opt/epics/support/autosave/lib/linux-x86_64/* $RPM_BUILD_ROOT/usr/local/lib64/
-# cp -a /opt/epics/support/autosave/bin/linux-x86_64/* $RPM_BUILD_ROOT/usr/local/bin
-# rm -rf /opt/epics/support/autosave
-
 %files
 %dir %attr(-,root,root) /opt/epics/support/
 %dir %attr(-,root,root) /opt/epics/support/autosave
@@ -81,7 +69,6 @@ rm -rf %{buildroot}
 %attr(-,root,root) /opt/epics/support/autosave/configure/RELEASE
 %attr(-,root,root) /opt/epics/support/autosave/db/*
 %attr(-,root,root) /opt/epics/support/autosave/dbd/*
-# %attr(-,root,root) /opt/epics/support/autosave/iocsh/*
 %attr(-,root,root) /opt/epics/support/autosave/include/os/Linux/osdNfs.h
 %attr(-,root,root) /opt/epics/support/autosave/lib/linux-x86_64/libautosave.so*
 %attr(-,root,root) /opt/epics/support/autosave/lib/linux-x86_64/libautosave.a
@@ -93,5 +80,5 @@ rm -rf %{buildroot}
 /usr/bin/asVerify
 
 %changelog
-* Thu Nov 08 2018 Abdalla Al-Dalleh 5.9
-  - Initial Release
+* Tue May 04 2021 Abdalla Al-Dalleh 5.10.2
+  - New build sequence.

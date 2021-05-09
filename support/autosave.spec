@@ -7,14 +7,14 @@
 %global epics_prefix /opt/epics/support/autosave
 %global _version 5.10.2
 
-Name:			synapps-autosave
+Name:			autosave
 Version:		5.10
 Release:		2%{?dist}
 Summary:		Autosave support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		synapps-autosave-%{_version}.tar.gz
+Source0:		autosave-%{_version}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +22,7 @@ Requires:		epics-base
 Autosave support for EPICS
 
 %prep
-%setup -q -n synapps-autosave-%{_version}
+%setup -q -n autosave-%{_version}
 
 %build
 
@@ -42,8 +42,11 @@ SHRLIB_PERMISSIONS=755
 
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_bindir}
-cp -a $RPM_BUILD_ROOT/%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}/
-cp -a $RPM_BUILD_ROOT/%{epics_prefix}/bin/linux-x86_64/* $RPM_BUILD_ROOT/usr/bin
+mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
+mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}
+
+ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64
+ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64
 
 export QA_SKIP_BUILD_ROOT=1
 
@@ -64,21 +67,16 @@ rm -rf %{buildroot}
 %dir %attr(-,root,root) /opt/epics/support/autosave/include/os
 %dir %attr(-,root,root) /opt/epics/support/autosave/include/os/Linux
 
-%attr(-,root,root) /opt/epics/support/autosave/bin/linux-x86_64/asApp
-%attr(-,root,root) /opt/epics/support/autosave/bin/linux-x86_64/asVerify
-%attr(-,root,root) /opt/epics/support/autosave/configure/RELEASE
+%attr(-,root,root) /opt/epics/support/autosave/bin/linux-x86_64/*
+%attr(-,root,root) /opt/epics/support/autosave/configure/*
 %attr(-,root,root) /opt/epics/support/autosave/db/*
 %attr(-,root,root) /opt/epics/support/autosave/dbd/*
-%attr(-,root,root) /opt/epics/support/autosave/include/os/Linux/osdNfs.h
-%attr(-,root,root) /opt/epics/support/autosave/lib/linux-x86_64/libautosave.so*
-%attr(-,root,root) /opt/epics/support/autosave/lib/linux-x86_64/libautosave.a
+%attr(-,root,root) /opt/epics/support/autosave/include/*
+%attr(-,root,root) /opt/epics/support/autosave/lib/linux-x86_64/*
 
-/usr/lib64/libautosave.so
-/usr/lib64/libautosave.so.%{version}
-/usr/lib64/libautosave.a
-/usr/bin/asApp
-/usr/bin/asVerify
+%{_libdir}/*
+%{_bindir}/*
 
 %changelog
-* Tue May 04 2021 Abdalla Al-Dalleh 5.10.2
+* Sun May 09 2021 Abdalla Al-Dalleh 5.10.2
   - New build sequence.

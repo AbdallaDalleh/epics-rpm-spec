@@ -43,10 +43,13 @@ LIB_PERMISSIONS=644 \
 SHRLIB_PERMISSIONS=755
 
 install -d %{buildroot}%{_libdir}
+install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{epics_prefix}/op
 
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
+mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
+ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64/
 cp -a %{_builddir}/%{?buildsubdir}/motorApp/op/!(Makefile) %{buildroot}%{epics_prefix}/op
 
 export QA_SKIP_BUILD_ROOT=1
@@ -59,6 +62,8 @@ rm -rf %{buildroot}
 %dir /opt/epics/support/
 %dir %{epics_prefix}
 %dir %{epics_prefix}/configure
+%dir %{epics_prefix}/bin
+%dir %{epics_prefix}/bin/linux-x86_64
 %dir %{epics_prefix}/db
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib
@@ -73,6 +78,7 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/include
 
 %{epics_prefix}/configure/*
+%{epics_prefix}/bin/linux-x86_64/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
 %{epics_prefix}/include/*
@@ -85,7 +91,10 @@ rm -rf %{buildroot}
 %{epics_prefix}/op/burt/*
 
 %{_libdir}/*
+%{_bindir}/*
 
 %changelog
+* Mon Nov 22 2021 Abdalla Al-Dalleh 7.2.2
+  - Added motor record modules to the build output.
 * Tue May 18 2021 Abdalla Al-Dalleh 7.2.2
   - New build sequence.

@@ -33,7 +33,7 @@ shopt -s extglob
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
-make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
+make -C "%{_builddir}/%{?buildsubdir}" \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
 INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \
@@ -70,7 +70,7 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/lib/linux-x86_64
 %dir %{epics_prefix}/op
 %dir %{epics_prefix}/op/adl
-%dir %{epics_prefix}/op/opi
+# %dir %{epics_prefix}/op/opi
 %dir %{epics_prefix}/op/ui
 
 %{epics_prefix}/bin/linux-x86_64/*
@@ -79,7 +79,7 @@ rm -rf %{buildroot}
 %{epics_prefix}/dbd/*
 %{epics_prefix}/lib/linux-x86_64/*
 %{epics_prefix}/op/adl/*
-%{epics_prefix}/op/opi/*
+# %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
 
 %{_libdir}/*

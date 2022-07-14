@@ -3,3 +3,4 @@
 !support/
 !extensions/
 !release-files/
+*.tar.gz

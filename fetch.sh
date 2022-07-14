@@ -8,6 +8,16 @@ modules_repos="asyn autosave busy calc caputRecorder dxp iocStats ipac mca modbu
 ad_repos="ADCore|core ADSupport|support ADSimDetector|simulation ADGenICam|genicam ADAravis|aravis"
 repos="${modules_repos} ${ad_repos}"
 seq_version="2.2.9"
+[[ -z "$base_version" ]] && base_version="3.15.6"
+
+if [[ ! -z "$base_version" ]]; then
+	rm -rf base-${base_version}*
+	wget https://epics.anl.gov/download/base/base-${base_version}.tar.gz
+	tar -xvf base-${base_version}.tar.gz
+	cp  -a   base-${base_version} ${rpmbuild}/SOURCES/epics-base-${base_version}
+	cd ${rpmbuild}/SOURCES/
+	tar czvf epics-base-${base_version}.tar.gz epics-base-${base_version}
+fi
 
 for module in $repos; do
 	if [[ "$module" == "stream-device" ]]; then

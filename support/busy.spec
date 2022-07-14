@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/busy
-%global _version 1.7.3
 
 Name:			busy
-Version:		1.7
-Release:		3%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Busy record support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base asyn autosave
 Requires:		epics-base asyn autosave
 
@@ -22,7 +21,7 @@ Requires:		epics-base asyn autosave
 Busy record support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

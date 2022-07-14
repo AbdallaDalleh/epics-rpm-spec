@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/calc
-%global _version 3.7.4
 
 Name:			calc
-Version:		3.7
-Release:		4%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Calc support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base seq sscan
 Requires:		epics-base seq sscan
 
@@ -22,7 +21,7 @@ Requires:		epics-base seq sscan
 CALC support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

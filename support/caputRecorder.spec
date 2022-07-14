@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/caputRecorder
-%global _version 1.7.3
 
 Name:			caputRecorder
-Version:		1.7
-Release:		3%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		caput Recorder support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +21,8 @@ Requires:		epics-base
 CAput Recorder Support for EPICS
 
 %prep
-%setup -q -n caputRecorder-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
+
 
 %build
 

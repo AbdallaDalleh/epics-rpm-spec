@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/asyn
-%global _version 4.41
 
 Name:			asyn
-Version:		4.41
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Asynchronous driver support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base seq sscan calc
 Requires:		epics-base seq sscan calc
 
@@ -22,13 +21,12 @@ Requires:		epics-base seq sscan calc
 Asynchronous driver support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 
 
 %install
-
 shopt -s extglob
 
 export EPICS_HOST_ARCH=linux-x86_64

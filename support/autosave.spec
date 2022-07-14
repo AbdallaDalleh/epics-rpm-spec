@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/autosave
-%global _version 5.10.2
 
 Name:			autosave
-Version:		5.10
-Release:		2%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Autosave support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		autosave-%{_version}.tar.gz
+Source0:		autosave-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +21,7 @@ Requires:		epics-base
 Autosave support for EPICS
 
 %prep
-%setup -q -n autosave-%{_version}
+%setup -q -n autosave-%{_version}.%{build_number}
 
 %build
 

@@ -5,24 +5,23 @@
 #
 
 %global epics_prefix /opt/epics/support/areaDetector/core
-%global _version 3.10
 
 Name:			area-detector-core
-Version:		3.10
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Area detector core libraries for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
-BuildRequires:	epics-base area-detector-support
-Requires:		epics-base area-detector-support
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base area-detector-support asyn
+Requires:		epics-base area-detector-support asyn
 
 %description
 Area detector core libraries for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

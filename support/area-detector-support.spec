@@ -5,24 +5,23 @@
 #
 
 %global epics_prefix /opt/epics/support/areaDetector/support
-%global _version 1.9.1
 
 Name:			area-detector-support
-Version:		1.9
-Release:		1%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Area detector support libraries for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
-BuildRequires:	epics-base iocstats autosave seq sscan calc asyn busy std
-Requires:		epics-base iocstats autosave seq sscan calc asyn busy std
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base
+Requires:		epics-base
 
 %description
 Area detector support libraries for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 
@@ -59,6 +58,7 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/bin
 %dir %{epics_prefix}/bin/linux-x86_64
 %dir %{epics_prefix}/configure
+%dir %{epics_prefix}/include
 %dir %{epics_prefix}/lib
 %dir %{epics_prefix}/lib/linux-x86_64
 

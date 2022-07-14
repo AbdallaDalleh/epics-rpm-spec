@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/s7nodave
-%global _version 3.0.2
 
 Name:			s7nodave
-Version:		3.0
-Release:		2%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Siemens S7 PLCs libnodave-based driver for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://oss.aquenos.com/epics/s7nodave/download/s7nodave-3.0.2.tar.gz
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base asyn
 Requires:		epics-base asyn
 
@@ -22,18 +21,16 @@ Requires:		epics-base asyn
 Siemens S7 PLCs libnodave-based driver for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 
 
 %install
-shopt -s extglob
-
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
-make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
+make -C "%{_builddir}/%{?buildsubdir}" CXXFLAGS="-std=c++11 -fPIC" \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
 INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \

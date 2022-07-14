@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/ether-ip
-%global _version 3.3
 
 Name:			ether-ip
-Version:		3.3
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Ether-IP EPICS support for allenBradley PLCs
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +21,7 @@ Requires:		epics-base
 Ether-IP support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

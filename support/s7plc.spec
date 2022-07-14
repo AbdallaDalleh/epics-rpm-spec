@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/s7plc
-%global _version 1.4.1
 
 Name:			s7plc
-Version:		1.4
-Release:		1.1%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Siemens S7 PLCs driver for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +21,7 @@ Requires:		epics-base
 Siemens S7 PLCs driver for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

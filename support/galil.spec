@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/galil
-%global _version 3.6
 
 Name:			galil
-Version:		3.6
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Galil motion control driver for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base autosave seq sscan calc asyn busy motor ipac
 Requires:		epics-base autosave seq sscan calc asyn busy motor ipac
 
@@ -22,7 +21,7 @@ Requires:		epics-base autosave seq sscan calc asyn busy motor ipac
 Galil motion control driver for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

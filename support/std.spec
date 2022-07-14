@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/std
-%global _version 3.6.2
 
 Name:			std
-Version:		3.6
-Release:		2%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Std record support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base asyn seq
 Requires:		epics-base asyn seq
 
@@ -22,7 +21,7 @@ Requires:		epics-base asyn seq
 Std record support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

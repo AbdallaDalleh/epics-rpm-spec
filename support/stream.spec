@@ -5,24 +5,23 @@
 #
 
 %global epics_prefix /opt/epics/support/stream
-%global _version 2.8.19
 
 Name:			stream-device
-Version:		2.8
-Release:		19%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Stream device driver support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
-BuildRequires:	epics-base seq sscan calc asyn
-Requires:		epics-base seq sscan calc asyn
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base seq sscan calc asyn pcre pcre-devel
+Requires:		epics-base seq sscan calc asyn pcre pcre-devel
 
 %description
 Stream device driver support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/mca
-%global _version 7.9
 
 Name:			mca
-Version:		7.9
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Multi-channel analyzers support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base asyn seq busy
 Requires:		epics-base asyn seq busy
 
@@ -22,7 +21,7 @@ Requires:		epics-base asyn seq busy
 Multi-channel analyzers support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 
@@ -33,7 +32,8 @@ shopt -s extglob
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
-make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
+# make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
+make -C "%{_builddir}/%{?buildsubdir}" \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
 INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \

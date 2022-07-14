@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/ipac
-%global _version 2.16
 
 Name:			ipac
-Version:		2.16
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		IPAC support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		ipac-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base
 Requires:		epics-base
 
@@ -22,7 +21,7 @@ Requires:		epics-base
 IPAC support for EPICS
 
 %prep
-%setup -q -n ipac-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

@@ -5,24 +5,24 @@
 #
 
 %global epics_prefix /opt/epics/support/motor
-%global _version 7.2.2
 
 Name:			motor
-Version:		7.2
-Release:		2%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Motor record support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base asyn seq busy
 Requires:		epics-base asyn seq busy
+Epoch:			1
 
 %description
 Motor record support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

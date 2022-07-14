@@ -5,16 +5,15 @@
 #
 
 %global epics_prefix /opt/epics/support/iocstats
-%global _version 3.1.16
 
-Name:			iocstats
-Version:		3.1
-Release:		16%{?dist}
+Name:			iocStats
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		IOC Stats support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		iocstats-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base seq
 Requires:		epics-base seq
 
@@ -22,7 +21,7 @@ Requires:		epics-base seq
 IOC Stats support for EPICS
 
 %prep
-%setup -q -n iocstats-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

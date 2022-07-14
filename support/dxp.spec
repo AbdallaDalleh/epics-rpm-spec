@@ -5,24 +5,23 @@
 #
 
 %global epics_prefix /opt/epics/support/dxp
-%global _version 6.0
 
 Name:			dxp
-Version:		6.0
-Release:		0%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Multi-channel analyzers support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
-BuildRequires:	epics-base seq autosave iocstats sscan calc asyn busy mca area-detector-support area-detector-core
-Requires:		epics-base seq autosave iocstats sscan calc asyn busy mca area-detector-support area-detector-core
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base seq autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
+Requires:		epics-base seq autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
 
 %description
 DXP detectors electronics support for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 

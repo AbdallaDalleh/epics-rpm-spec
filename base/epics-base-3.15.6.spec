@@ -48,10 +48,11 @@ install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_sysconfdir}/systemd/system
 install -d %{buildroot}%{_bindir}
 mv %{buildroot}/opt/epics/base/lib/linux-x86_64/* %{buildroot}%{_libdir}/
-mv %{buildroot}/opt/epics/base/bin/linux-x86_64/* %{buildroot}%{_bindir}/
+# mv %{buildroot}/opt/epics/base/bin/linux-x86_64/* %{buildroot}%{_bindir}/
 
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}/opt/epics/base/lib/linux-x86_64/
-ln -sr %{buildroot}%{_bindir}/* %{buildroot}/opt/epics/base/bin/linux-x86_64/
+# ln -sr %{buildroot}%{_bindir}/* %{buildroot}/opt/epics/base/bin/linux-x86_64/
+ln -sr %{buildroot}/opt/epics/base/bin/linux-x86_64/ca!(*.pl) %{buildroot}%{_bindir}
 
 sed -i 's|%{buildroot}||g' %{buildroot}%{_bindir}/caRepeater.service
 cp %{buildroot}%{_bindir}/caRepeater.service %{buildroot}%{_sysconfdir}/systemd/system

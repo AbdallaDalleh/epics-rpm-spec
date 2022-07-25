@@ -5,18 +5,19 @@
 #
 
 %global epics_prefix /opt/epics/extensions/caqtdm
-%global _version 4.2.4
+%global _version 4.4.0
 
 Name:			caqtdm
-Version:		4.2
-Release:		4%{?dist}
+Version:		4.4
+Release:		0%{?dist}
 Summary:		Qt-Based Replacement for MEDM.
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://github.com/caqtdm/caqtdm/archive/V4.2.4.tar.gz
 Source0:		%{name}-%{_version}.tar.gz
-BuildRequires:	epics-base, qwt = 6.1.3, qt5-qtbase, qt5-qtbase-gui, qt5-qtsvg
-Requires:		epics-base, qwt = 6.1.3, qt5-qtbase, qt5-qtbase-gui, qt5-qtsvg
+BuildRequires:	epics-base, qwt, qt5-qtbase, qt5-qtbase-gui, qt5-qtsvg
+Requires:		epics-base, qwt, qt5-qtbase, qt5-qtbase-gui, qt5-qtsvg
+Provides:	libadlParser.so()(64bit) libedlParser.so()(64bit)
 
 %description
 caQtDM is an MEDM replacement based on Qt
@@ -33,6 +34,7 @@ install -d %{buildroot}%{epics_prefix}/designer
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{_libdir}
 
+export EPICSEXTENSIONS=%{buildroot}%{epics_prefix}
 QTDM_PATH=%{buildroot} ./caQtDM_Install
 
 for bin in caQtDM adl2ui edl2ui; do

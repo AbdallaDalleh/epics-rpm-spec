@@ -3,4 +3,5 @@
 !support/
 !extensions/
 !release-files/
+!rocky-linux/
 *.tar.gz

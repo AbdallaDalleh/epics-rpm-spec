@@ -44,6 +44,7 @@ mv %{buildroot}/%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}/
 mv %{buildroot}/%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}/
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64/
+ln -sr %{buildroot}%{epics_prefix}/cfg/* %{buildroot}%{epics_prefix}/configure
 
 export QA_SKIP_BUILD_ROOT=1
 
@@ -54,6 +55,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %dir /opt/epics/support/
 %dir /opt/epics/support/seq
+%dir /opt/epics/support/seq/cfg
 %dir /opt/epics/support/seq/bin
 %dir /opt/epics/support/seq/bin/linux-x86_64
 %dir /opt/epics/support/seq/configure
@@ -64,6 +66,7 @@ rm -rf %{buildroot}
 %dir /opt/epics/support/seq/html
 %dir /opt/epics/support/seq/include
 
+/opt/epics/support/seq/cfg/*
 /opt/epics/support/seq/bin/*
 /opt/epics/support/seq/configure/*
 /opt/epics/support/seq/db/*

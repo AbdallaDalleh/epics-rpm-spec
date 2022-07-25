@@ -75,36 +75,3 @@ if [[ -f seq-${seq_version}.tar.gz ]]; then
 	cd ~-
 fi
 
-exit
-
-# Area Detector
-# for item in $ad_repos; do
-# 	module=$(echo $item | cut -d'|' -f1)
-# 	name=area-detector-$(echo $item | cut -d'|' -f2)
-# 	if [[ ! -d $name/.git ]]; then
-# 		git clone --quiet https://github.com/areaDetector/$module $name
-# 	fi
-# 
-# 	cd $name
-# 	git checkout --quiet master
-# 	git pull --quiet origin master
-# 	git fetch --quiet --all --tags
-# 	version="$(git describe --tags "$(git rev-list --tags --max-count=1)")"
-# 	git checkout --quiet "${version}"
-# 	cd ../
-# 	
-# 	version=$(echo $version | sed -e "s/R//g" -e "s/-/./g")
-# 	[[ -z "$(echo $version | cut -d. -f3)" ]] && version=${version}.0
-# 	echo ${module} - ${version}
-# 	rm -rf $rpmbuild/SOURCES/$name-$version
-# 	cp -a $name $rpmbuild/SOURCES/$name-$version
-# 	[[ -f release-files/${name}.RELEASE ]]     && cp release-files/${name}.RELEASE $rpmbuild/SOURCES/$name-$version/configure/RELEASE
-# 	[[ -f release-files/${name}.CONFIG_SITE ]] && cp release-files/${name}.CONFIG_SITE $rpmbuild/SOURCES/$name-$version/configure/CONFIG_SITE
-# 	cd $rpmbuild/SOURCES/${name}-${version}
-# 	find . -name ".git*" | xargs rm -rf
-# 	[[ "$name" == "area-detector-simulation" ]] && sed -i "s/ADApp/cfg/g" simDetectorApp/src/Makefile 
-# 	cd $rpmbuild/SOURCES
-# 	tar czvf ${name}-${version}.tar.gz ${name}-${version}/ > /dev/null 2>&1
-# 	cd /home/control/work/epics-modules
-# done
- 

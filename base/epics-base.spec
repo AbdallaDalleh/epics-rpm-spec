@@ -14,7 +14,7 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov/download/base/base-3.15.6.tar.gz
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	readline-devel
+BuildRequires:	readline-devel re2c
 Autoreq:		0
 Conflicts:		epics-base-3.14 epics-base-7
 Epoch:			0

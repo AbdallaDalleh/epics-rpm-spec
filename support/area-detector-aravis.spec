@@ -6,16 +6,17 @@
 
 %global epics_prefix /opt/epics/support/areaDetector/aravis
 
-Name:			area-detector-aravis
-Version:		%{_version}
-Release:		%{build_number}%{?dist}
-Summary:		Aravis Video Acquisition drivers for EPICS
-Group:			Applications/Engineering
-License:		GPL+
-URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+Name:		area-detector-aravis
+Version:	%{_version}
+Release:	%{build_number}%{?dist}
+Summary:	Aravis Video Acquisition drivers for EPICS
+Group:		Applications/Engineering
+License:	GPL+
+URL:		https://epics.anl.gov
+Source0:	%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	epics-base area-detector-core aravis-0.8 aravis-0.8-devel
-Requires:		epics-base area-detector-core aravis-0.8 aravis-0.8-devel
+Requires:	epics-base area-detector-core aravis-0.8 aravis-0.8-devel
+Epoch:		1
 
 %description
 Aravis Video Acquisition drivers for EPICS

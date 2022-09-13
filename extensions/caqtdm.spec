@@ -52,10 +52,12 @@ for lib in libqtcontrols_controllers_plugin.so libqtcontrols_graphics_plugin.so 
 	ln -sr %{buildroot}%{_libdir}/$lib %{buildroot}%{epics_prefix}/designer
 done
 
-for lib in libcaQtDM_Lib.so libqtcontrols.so; do
+for lib in libcaQtDM_Lib.so libqtcontrols.so libadlParser.so libedlParser.so; do
 	mv     %{buildroot}%{epics_prefix}/$lib %{buildroot}%{_libdir}
 	ln -sr %{buildroot}%{_libdir}/$lib %{buildroot}%{epics_prefix}
 done
+
+export QA_SKIP_BUILD_ROOT=1
 
 %files
 %defattr(-,root,root)
@@ -70,13 +72,15 @@ done
 %{epics_prefix}/startDM
 %{epics_prefix}/controlsystems/*
 %{epics_prefix}/designer/*
-%{epics_prefix}/libcaQtDM_Lib.so
-%{epics_prefix}/libqtcontrols.so
+%{epics_prefix}/*.so
+%{epics_prefix}/*.a
 
 %{_bindir}/*
 %{_libdir}/*
 
 %changelog
+* Mon Sep 12 2022 Abdalla Al-Dalleh 4.2-4
+	- Added v4.2.4.
 * Thu May 20 2021 Abdalla Al-Dalleh 4.2-4
 	- Initial RPM release.
 

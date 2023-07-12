@@ -12,7 +12,7 @@ The structure of the spec files and the RPM packages is as following:
           /support
 ```
   
- Where drivers are installed under `/support` and extensions like `edm` and `medm` (Also have been packaged) are installed under `/extensions`.
+Where drivers are installed under `/support` and extensions like `edm` and `medm` (Also have been packaged) are installed under `/extensions`.
 
 2. Packages names are simple: `epics-base`, `asyn`, `area-detector-core`, etc.
 3. The spec files package everything from the output of `make` command that resides in the `FINAL_LOCATION` variable plus extra folders that might not be packaged like `op`.

@@ -1,0 +1,5 @@
+
+SUPPORT=/opt/epics/support
+ASYN=$(SUPPORT)/asyn
+EPICS_BASE=/opt/epics/base
+

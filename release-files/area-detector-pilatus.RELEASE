@@ -1,0 +1,14 @@
+#RELEASE Location of external products
+# Run "gnumake clean uninstall install" in the application
+# top directory each time this file is changed.
+
+# -include $(TOP)/../configure/RELEASE_LIBS_INCLUDE
+# -include $(TOP)/RELEASE.local
+# -include $(TOP)/configure/RELEASE.local
+
+ASYN = /opt/epics/support/asyn
+ADCORE = /opt/epics/support/areaDetector/core
+ADSUPPORT = /opt/epics/support/areaDetector/support
+ADGENICAM = /opt/epics/support/areaDetector/genicam
+EPICS_BASE = /opt/epics/base
+

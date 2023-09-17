@@ -1,0 +1,9 @@
+
+ASYN = /opt/epics/support/asyn
+ADCORE = /opt/epics/support/areaDetector/core
+ADGENICAM = /opt/epics/support/areaDetector/genicam
+EPICS_BASE = /opt/epics/base
+
+WITH_PYLON = YES
+PYLON_INCLUDE = /usr/pylon/include
+PYLON_LIB = /usr/pylon/lib

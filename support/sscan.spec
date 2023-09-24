@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base
-Requires:		epics-base
+BuildRequires:	epics-base python27
+Requires:		epics-base python27
 
 %description
 EPICS sscan support module
@@ -48,6 +48,7 @@ cp -a  %{_builddir}/%{?buildsubdir}/sscanApp/op/* %{buildroot}%{epics_prefix}/op
 rm -f  %{buildroot}%{epics_prefix}/op/Makefile
 
 export QA_SKIP_BUILD_ROOT=1
+sed -i "s/python/python2/" %{buildroot}%{epics_prefix}/op/python/*.py
 
 %clean
 rm -rf %{buildroot}

@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq sscan
-Requires:		epics-base seq sscan
+BuildRequires:	epics-base seq sscan perl-ExtUtils-Command
+Requires:		epics-base seq sscan perl-ExtUtils-Command
 
 %description
 CALC support for EPICS

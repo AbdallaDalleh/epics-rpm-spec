@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq sscan calc
-Requires:		epics-base seq sscan calc
+BuildRequires:	epics-base seq sscan calc libtirpc libtirpc-devel rpcgen
+Requires:		epics-base seq sscan calc libtirpc libtirpc-devel rpcgen
 
 %description
 Asynchronous driver support for EPICS
@@ -39,7 +39,8 @@ INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \
 FINAL_LOCATION=%{epics_prefix} \
 BIN_PERMISSIONS=755 \
 LIB_PERMISSIONS=644 \
-SHRLIB_PERMISSIONS=755
+SHRLIB_PERMISSIONS=755 \
+TIRPC=YES
 
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_bindir}

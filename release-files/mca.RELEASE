@@ -19,6 +19,9 @@ SSCAN=$(SUPPORT)/sscan
 BUSY=$(SUPPORT)/busy
 
 # Scaler record
+SCALER=$(SUPPORT)/scaler
+
+# Scaler record
 STD=$(SUPPORT)/std
 
 # SISSrc uses the sequencer

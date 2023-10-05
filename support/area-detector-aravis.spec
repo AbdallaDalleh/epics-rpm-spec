@@ -14,9 +14,9 @@ Group:		Applications/Engineering
 License:	GPL+
 URL:		https://epics.anl.gov
 Source0:	%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base area-detector-core aravis-0.8 aravis-0.8-devel
-Requires:	epics-base area-detector-core aravis-0.8 aravis-0.8-devel
-Epoch:		1
+BuildRequires:	epics-base area-detector-core aravis-0.8 aravis-0.8-devel gstreamer1-plugins-base-devel gtk3-devel libxml2-devel libusbx-devel gobject-introspection-devel
+Requires:		epics-base area-detector-core aravis-0.8 aravis-0.8-devel gstreamer1-plugins-base-devel gtk3-devel libxml2-devel libusbx-devel gobject-introspection-devel
+Epoch:			1
 
 %description
 Aravis Video Acquisition drivers for EPICS

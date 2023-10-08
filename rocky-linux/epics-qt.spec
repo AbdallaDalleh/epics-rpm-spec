@@ -17,6 +17,8 @@ Source0:	epics-qt-3.6.3.tar.gz
 BuildRequires:	qwt qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-private-devel qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
 Requires:	qwt qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-private-devel qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
 
+Epoch:		1
+
 %description
 EPICS-based widgets and client interface for Qt Framework.
 

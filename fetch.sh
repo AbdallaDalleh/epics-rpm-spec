@@ -4,11 +4,11 @@ set -e
 
 sources="/home/control/work/epics-modules"
 rpmbuild="/home/control/rpmbuild"
-modules_repos="asyn autosave busy calc caputRecorder dxp iocStats ipac mca modbus motor sscan std stream-device ether-ip"
+modules_repos="asyn autosave busy calc scaler caputRecorder dxp iocStats ipac mca modbus motor sscan std stream-device ether-ip"
 ad_repos="ADCore|core ADSupport|support ADSimDetector|simulation ADGenICam|genicam ADAravis|aravis"
 repos="${modules_repos} ${ad_repos}"
 seq_version="2.2.9"
-[[ -z "$base_version" ]] && base_version="3.15.6"
+[[ -z "$base_version" ]] && base_version="3.15.9"
 
 if [[ ! -z "$base_version" ]]; then
 	rm -rf base-${base_version}*
@@ -59,7 +59,7 @@ for module in $repos; do
 	[[ "$module" == area-detector-!(core) || "$module" == "dxp" ]] && find . -name Makefile -exec sed -i "s/ADApp/cfg/g" {} \;
 	[[ "$module" == "motor" ]] && grep -rHE "^SUPPORT\s?=" | cut -d: -f1 | xargs sed -i -e "s/SUPPORT=.*/SUPPORT=\/opt\/epics\/support/g" -e "s/SUPPORT =.*/SUPPORT=\/opt\/epics\/support/g"
 
-	cd $rpmbuild/SOURCES
+	cd ${rpmbuild}/SOURCES/
 	tar czvf ${module}-${version}.tar.gz ${module}-${version}/ > /dev/null 2>&1
 	cd ${sources}
 done

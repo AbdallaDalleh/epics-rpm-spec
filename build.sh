@@ -2,7 +2,7 @@
 
 set -e
 
-repos="seq autosave caputRecorder iocStats ether-ip sscan calc ipac asyn stream-device modbus busy std motor mca support core dxp simulation genicam aravis"
+repos="seq autosave caputRecorder iocStats ether-ip sscan calc ipac asyn scaler stream-device modbus busy std motor mca support area-detector-core dxp area-detector-simulation area-detector-genicam area-detector-aravis area-detector-pylon area-detector-pilatus"
 
 function build_rpm() {
 	name="$1"
@@ -28,7 +28,7 @@ if [[ "$1" == "all" ]]; then
 	# list=$(ls -d -1 SOURCES/*/ | xargs -I% basename %)
 	list="$repos";
 	for module in $list; do
-		module=$(ls -d -1 SOURCES/*$module*/ | xargs -I% basename %)
+		module=$(ls -t -1 SOURCES/*$module*.tar.gz | head -n1 | xargs -I% basename %)
 		mod_version=${module##*-}
 		mod_name=$(echo $module | sed "s/-$mod_version//g")
 		echo $mod_name - $mod_version

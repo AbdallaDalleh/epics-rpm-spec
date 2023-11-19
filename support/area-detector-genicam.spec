@@ -46,6 +46,7 @@ install -d %{buildroot}%{epics_prefix}/op
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 cp -a  %{_builddir}/%{?buildsubdir}/GenICamApp/op/!(Makefile) %{buildroot}%{epics_prefix}/op
+cp -a  %{_builddir}/%{?buildsubdir}/GenICamApp/Db/*.req %{buildroot}%{epics_prefix}/db
 
 export QA_SKIP_BUILD_ROOT=1
 

@@ -10,8 +10,8 @@ function popd() {
 	command popd "$@" > /dev/null
 }
 
-sources="/home/control/work/epics-modules"
-rpmbuild="/home/control/rpmbuild"
+sources="${HOME}/work/epics-modules"
+rpmbuild="${HOME}/control/rpmbuild"
 nfs=/mnt/epics
 [[ -z "$base_version" ]] && base_version="3.15.6"
 [[ -z "$seq_version"  ]] && seq_version="2.2.9"

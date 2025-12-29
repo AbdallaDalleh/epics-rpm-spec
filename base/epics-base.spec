@@ -35,6 +35,7 @@ shopt -s extglob
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
+sed -i "s/python/python3/" src/tools/makeRPath.py
 make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
@@ -81,6 +82,8 @@ systemctl daemon-reload
 %dir /opt/epics/base
 %dir /opt/epics/base/bin
 %dir /opt/epics/base/bin/linux-x86_64
+%dir /opt/epics/base/cfg
+%dir /opt/epics/base/doc
 %dir /opt/epics/base/configure
 %dir /opt/epics/base/db
 %dir /opt/epics/base/dbd
@@ -94,6 +97,8 @@ systemctl daemon-reload
 %dir /opt/epics/base/startup
 
 /opt/epics/base/bin/linux-x86_64/*
+/opt/epics/base/cfg/*
+/opt/epics/base/doc/*
 /opt/epics/base/configure/*
 /opt/epics/base/db/*
 /opt/epics/base/dbd/*

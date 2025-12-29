@@ -5,11 +5,11 @@
 #
 
 %global epics_prefix /opt/epics/extensions/medm
-%global _version 3.1.11
+%global _version 3.1.20
 
 Name:			medm
 Version:		3.1
-Release:		11%{?dist}
+Release:		20%{?dist}
 Summary:		Motif Extensible Display Manager for EPICS
 Group:			Applications/Engineering
 License:		GPL+

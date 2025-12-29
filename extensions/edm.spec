@@ -5,12 +5,12 @@
 #
 
 %global epics_prefix /opt/epics/extensions/edm
-%global _version 1.12.103
+%global _version 1.12.105
 %define debug_package %{nil}
 
 Name:			edm
 Version:		1.12
-Release:		103%{?dist}
+Release:		105%{?dist}
 Summary:		Extensible Display Manager for EPICS
 Group:			Applications/Engineering
 License:		GPL+

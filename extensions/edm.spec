@@ -5,17 +5,18 @@
 #
 
 %global epics_prefix /opt/epics/extensions/edm
-%global _version 1.12.105
 %define debug_package %{nil}
 
 Name:			edm
-Version:		1.12
-Release:		105%{?dist}
+# Version:		1.12
+# Release:		105%{?dist}
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
 Summary:		Extensible Display Manager for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.tar.gz
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
 BuildRequires:	expat fontconfig freetype glibc libgcc libICE libjpeg libSM libstdc++ libuuid libX11 libXau libxcb libXext libXft libXi libXmu libXp libXrender libXt libXtst motif ncurses readline zlib fontconfig-devel freetype-devel glibc-devel libICE-devel libjpeg-devel libSM-devel libstdc++-devel libuuid-devel libXau-devel libxcb-devel libXext-devel libXft-devel libXi-devel libXmu-devel libXp-devel libXrender-devel libXt-devel libXtst-devel motif-devel ncurses-devel readline-devel expat-devel epics-base
 Requires:		expat fontconfig freetype glibc libgcc libICE libjpeg libSM libstdc++ libuuid libX11 libXau libxcb libXext libXft libXi libXmu libXp libXrender libXt libXtst motif ncurses readline zlib fontconfig-devel freetype-devel glibc-devel libICE-devel libjpeg-devel libSM-devel libstdc++-devel libuuid-devel libXau-devel libxcb-devel libXext-devel libXft-devel libXi-devel libXmu-devel libXp-devel libXrender-devel libXt-devel libXtst-devel motif-devel ncurses-devel readline-devel expat-devel epics-base
 
@@ -23,7 +24,7 @@ Requires:		expat fontconfig freetype glibc libgcc libICE libjpeg libSM libstdc++
 Extensible Display Manager for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}
+%setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
 
@@ -39,7 +40,7 @@ LIB_PERMISSIONS=644 \
 SHRLIB_PERMISSIONS=755
 
 install -d %{buildroot}%{_bindir}
-mv %{buildroot}%{epics_prefix}/include/edm/* %{buildroot}%{epics_prefix}/include
+# mv %{buildroot}%{epics_prefix}/include/* %{buildroot}%{epics_prefix}/include
 mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/edm %{buildroot}%{_bindir}
 ln -sr %{buildroot}%{_bindir}/edm %{buildroot}%{epics_prefix}/bin/linux-x86_64
 

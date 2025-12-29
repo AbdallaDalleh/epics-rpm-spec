@@ -60,6 +60,7 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}
 %dir %{epics_prefix}/configure
 %dir %{epics_prefix}/db
+%dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/include
 %dir %{epics_prefix}/lib/
 %dir %{epics_prefix}/lib/linux-x86_64/
@@ -77,6 +78,7 @@ rm -rf %{buildroot}
 %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
 %{epics_prefix}/db/*
+%{epics_prefix}/dbd/*
 %{epics_prefix}/include/*
 %{epics_prefix}/lib/linux-x86_64/*
 

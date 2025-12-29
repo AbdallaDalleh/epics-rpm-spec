@@ -1,27 +1,25 @@
 # 
-# Area detector drivers for pylon Cameras
+# Area detector simulation drivers for EPICS
 #
 # Author: Abdalla Al-Dalleh <abdalla.ahmad@sesame.org.jo>
 #
 
-%global debug_package %{nil}
-%global epics_prefix /opt/epics/support/areaDetector/pylon
+%global epics_prefix /opt/epics/support/areaDetector/spinnaker
 
-Name:		area-detector-pylon
-Version:	%{_version}
-Release:	%{build_number}%{?dist}
-Summary:	pylon Cameras drivers for EPICS
-Group:		Applications/Engineering
-License:	GPL+
-URL:		https://epics.anl.gov
-Source0:	%{name}-%{_version}.%{build_number}.tar.gz
-AutoReq:	0
-BuildRequires:	epics-base area-detector-genicam
-Requires:	epics-base area-detector-genicam
-Epoch:		2
+Name:			area-detector-spinnaker
+Version:		%{_version}
+Release:		%{build_number}%{?dist}
+Summary:		EPICS Drivers for Pilatus Detectors
+Group:			Applications/Engineering
+License:		GPL+
+URL:			https://epics.anl.gov
+Source0:		%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base area-detector-core area-detector-support area-detector-genicam
+Requires:		epics-base area-detector-core area-detector-support area-detector-genicam
+Provides:		libGCBase_gcc540_v3_0.so()(64bit) libGenApi_gcc540_v3_0.so()(64bit) libLog_gcc540_v3_0.so()(64bit) libMathParser_gcc540_v3_0.so()(64bit) libNodeMapData_gcc540_v3_0.so()(64bit) libSpinnaker.so.2()(64bit) libXmlParser_gcc540_v3_0.so()(64bit)
 
 %description
-pylon Cameras Drivers for EPICS
+EPICS Drivers for FLIR cameras
 
 %prep
 %setup -q -n %{name}-%{_version}.%{build_number}
@@ -48,11 +46,10 @@ install -d %{buildroot}%{epics_prefix}/op
 
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
-cp -a  %{_builddir}/%{?buildsubdir}/pylonApp/op/!(Makefile) %{buildroot}%{epics_prefix}/op
-cp -a  %{_builddir}/%{?buildsubdir}/pylonApp/Db/*.req %{buildroot}%{epics_prefix}/db
+cp -a  %{_builddir}/%{?buildsubdir}/spinnakerApp/op/!(Makefile) %{buildroot}%{epics_prefix}/op
+cp -a  %{_builddir}/%{?buildsubdir}/spinnakerApp/Db/*.req %{buildroot}%{epics_prefix}/db
 
 export QA_SKIP_BUILD_ROOT=1
-export QA_CHECK_RPATHS=0
 
 %clean
 rm -rf %{buildroot}
@@ -63,17 +60,25 @@ rm -rf %{buildroot}
 %dir /opt/epics/support/areaDetector
 %dir %{epics_prefix}
 %dir %{epics_prefix}/configure
+%dir %{epics_prefix}/bin
 %dir %{epics_prefix}/db
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib/
 %dir %{epics_prefix}/lib/linux-x86_64/
 %dir %{epics_prefix}/op/
+%dir %{epics_prefix}/op/bob
 %dir %{epics_prefix}/op/adl
+%dir %{epics_prefix}/op/edl
+%dir %{epics_prefix}/op/opi
 %dir %{epics_prefix}/op/ui
 
 %{epics_prefix}/configure/RELEASE
+%{epics_prefix}/op/bob/*
 %{epics_prefix}/op/adl/*
+%{epics_prefix}/op/edl/*
+%{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
+%{epics_prefix}/bin/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
 %{epics_prefix}/lib/linux-x86_64/*
@@ -81,7 +86,5 @@ rm -rf %{buildroot}
 %{_libdir}/*
 
 %changelog
-* Sun Sep 17 2023 Abdalla 0.0-1:1
-  - Epoch=2: Added pylon SDK 7.3
-* Mon Aug 07 2023 Abdalla Al-Dalleh 0.0-1
+* Mon Jun 23 2025 Abdalla Al-Dalleh 3.3-0
   - Initial Release

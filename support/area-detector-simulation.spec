@@ -68,12 +68,14 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/op/edl
 %dir %{epics_prefix}/op/opi
 %dir %{epics_prefix}/op/ui
+%dir %{epics_prefix}/op/bob
 
 %{epics_prefix}/configure/RELEASE
 %{epics_prefix}/op/adl/*
 %{epics_prefix}/op/edl/*
 %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
+%{epics_prefix}/op/bob/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
 %{epics_prefix}/include/*

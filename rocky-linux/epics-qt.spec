@@ -1,29 +1,29 @@
 
-%define qwt 6.1.3
+%define qwt 6.3.0
 %define epics_host linux-x86_64
 %define epics_prefix /usr/local/epics-qt
 %define debug_package %{nil}
 
 Name:		epics-qt
-Version:	3.6
-Release:	3%{?dist}
+Version:	%{_version}
+Release:	%{build_number}%{?dist}
 Summary:	EPICS-based widgets and client interface for Qt Framework
 
 Group:		Applications/Engineering
 License:	GPL+
 URL:		https://qtepics.github.io
-Source0:	epics-qt-3.6.3.tar.gz
+Source0:	epics-qt-%{version}.%{build_number}.tar.gz
 
 BuildRequires:	qwt qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-private-devel qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
 Requires:	qwt qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-private-devel qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
 
-Epoch:		1
+Provides:   qeframework qeframework-qt5
 
 %description
 EPICS-based widgets and client interface for Qt Framework.
 
 %prep
-%setup -q -n epics-qt-3.6.3
+%setup -q -n epics-qt-%{version}.%{build_number}
 
 
 %build

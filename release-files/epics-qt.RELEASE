@@ -1,0 +1,6 @@
+BUNDLE=
+QE_FRAMEWORK=$(QE_TARGET_DIR)
+QE_PVACCESS_SUPPORT=NO
+ACAI=/opt/epics/acai
+
+EPICS_BASE=/opt/epics/base

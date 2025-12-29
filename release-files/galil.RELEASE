@@ -1,0 +1,10 @@
+
+ASYN = /opt/epics/support/asyn
+CALC = /opt/epics/support/calc
+BUSY = /opt/epics/support/busy
+SSCAN = /opt/epics/support/sscan
+MOTOR = /opt/epics/support/motor
+AUTOSAVE = /opt/epics/support/autosave
+
+EPICS_BASE = /opt/epics/base
+

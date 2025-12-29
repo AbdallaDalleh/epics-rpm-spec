@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base asyn seq busy
-Requires:		epics-base asyn seq busy
+BuildRequires:	epics-base asyn sequencer busy
+Requires:		epics-base asyn sequencer busy
 Epoch:			1
 
 %description
@@ -63,7 +63,6 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}
 %dir %{epics_prefix}/configure
 %dir %{epics_prefix}/bin
-%dir %{epics_prefix}/bin/linux-x86_64
 %dir %{epics_prefix}/db
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib
@@ -78,7 +77,7 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/include
 
 %{epics_prefix}/configure/*
-%{epics_prefix}/bin/linux-x86_64/*
+%{epics_prefix}/bin/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
 %{epics_prefix}/include/*

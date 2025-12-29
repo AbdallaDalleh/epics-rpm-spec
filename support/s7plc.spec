@@ -66,12 +66,14 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib
 %dir %{epics_prefix}/lib/linux-x86_64
+%dir %{epics_prefix}/html
 
 %{epics_prefix}/bin/linux-x86_64/*
 %{epics_prefix}/configure/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
 %{epics_prefix}/lib/linux-x86_64/*
+%{epics_prefix}/html/*
 
 %{_libdir}/*
 %{_bindir}/*

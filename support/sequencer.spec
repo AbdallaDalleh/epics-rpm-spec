@@ -7,7 +7,7 @@
 %define debug_package %{nil}
 %global epics_prefix /opt/epics/support/seq
 
-Name:			seq
+Name:			sequencer
 Version:		%{_version}
 Release:		%{build_number}%{?dist}
 Summary:		SNL Sequencers support for EPICS

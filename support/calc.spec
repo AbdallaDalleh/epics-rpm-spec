@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq sscan perl-ExtUtils-Command
-Requires:		epics-base seq sscan perl-ExtUtils-Command
+BuildRequires:	epics-base sequencer sscan perl-ExtUtils-Command
+Requires:		epics-base sequencer sscan perl-ExtUtils-Command
 
 %description
 CALC support for EPICS
@@ -84,6 +84,8 @@ rm -rf %{buildroot}
 %{epics_prefix}/op/burt/*
 
 %{_libdir}/*
+
+%exclude %{epics_prefix}/op/ui/.gitignore
 
 %changelog
 * Sun May 09 2021 Abdalla Al-Dalleh 3.1.15

@@ -6,16 +6,16 @@
 
 %global epics_prefix /opt/epics/support/std
 
-Name:			std
-Version:		%{_version}
-Release:		%{build_number}%{?dist}
-Summary:		Std record support for EPICS
-Group:			Applications/Engineering
-License:		GPL+
-URL:			https://epics.anl.gov
-Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base asyn seq
-Requires:		epics-base asyn seq
+Name:		std
+Version:	%{_version}
+Release:	%{build_number}%{?dist}
+Summary:	Std record support for EPICS
+Group:		Applications/Engineering
+License:	GPL+
+URL:		https://epics.anl.gov
+Source0:	%{name}-%{_version}.%{build_number}.tar.gz
+BuildRequires:	epics-base asyn sequencer
+Requires:	epics-base asyn sequencer
 
 %description
 Std record support for EPICS
@@ -88,6 +88,7 @@ rm -rf %{buildroot}
 %{epics_prefix}/op/bob/*
 %{epics_prefix}/op/ui/*
 %{epics_prefix}/op/burt/*
+%exclude %{epics_prefix}/op/ui/.gitignore
 
 %{_libdir}/*
 %{_bindir}/*

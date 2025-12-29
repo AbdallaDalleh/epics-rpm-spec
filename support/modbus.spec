@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq sscan calc
-Requires:		epics-base seq sscan calc
+BuildRequires:	epics-base sequencer sscan calc
+Requires:		epics-base sequencer sscan calc
 
 %description
 Modbus driver support for EPICS

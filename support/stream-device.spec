@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq sscan calc asyn pcre pcre-devel
-Requires:		epics-base seq sscan calc asyn pcre pcre-devel
+BuildRequires:	epics-base sequencer sscan calc asyn pcre pcre-devel
+Requires:		epics-base sequencer sscan calc asyn pcre pcre-devel
 
 %description
 Stream device driver support for EPICS

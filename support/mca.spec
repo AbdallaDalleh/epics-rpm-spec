@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base asyn seq busy libnet-devel libpcap libpcap-devel
-Requires:		epics-base asyn seq busy libnet-devel libpcap libpcap-devel
+BuildRequires:		epics-base asyn sequencer busy scaler libnet-devel libpcap libpcap-devel
+Requires:		epics-base asyn sequencer busy scaler libnet-devel libpcap libpcap-devel
 
 %description
 Multi-channel analyzers support for EPICS

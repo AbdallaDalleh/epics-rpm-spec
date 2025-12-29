@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq python27
-Requires:		epics-base seq python27
+BuildRequires:	epics-base sequencer python27
+Requires:		epics-base sequencer python27
 
 %description
 IOC Stats support for EPICS
@@ -30,7 +30,7 @@ IOC Stats support for EPICS
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
-make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
+make -C "%{_builddir}/%{?buildsubdir}" \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
 INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \
@@ -48,7 +48,6 @@ mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64/
 cp -a %{_builddir}/%{?buildsubdir}/op/* %{buildroot}%{epics_prefix}/op
-mv %{buildroot}%{epics_prefix}/edl %{buildroot}%{epics_prefix}/op
 
 export QA_SKIP_BUILD_ROOT=1
 sed -i "s/python/python2/" %{buildroot}%{_bindir}/iocReleaseCreateDb.py
@@ -67,11 +66,13 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib
 %dir %{epics_prefix}/lib/linux-x86_64
+%dir %{epics_prefix}/op/edl
 %dir %{epics_prefix}/op
 %dir %{epics_prefix}/op/adl
 %dir %{epics_prefix}/op/edl
 %dir %{epics_prefix}/op/opi
 %dir %{epics_prefix}/op/ui
+%dir %{epics_prefix}/op/bob
 %dir %{epics_prefix}/include
 %dir %{epics_prefix}/include/os
 %dir %{epics_prefix}/include/os/Linux/
@@ -82,10 +83,13 @@ rm -rf %{buildroot}
 %{epics_prefix}/dbd/*
 %{epics_prefix}/include/os/Linux/*
 %{epics_prefix}/lib/linux-x86_64/*
+%{epics_prefix}/edl/*
 %{epics_prefix}/op/adl/*
 %{epics_prefix}/op/edl/*
 %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
+%{epics_prefix}/op/bob/*
+%{epics_prefix}/op/Makefile
 
 %{_libdir}/*
 %{_bindir}/*

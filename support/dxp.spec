@@ -14,8 +14,8 @@ Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base seq autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
-Requires:		epics-base seq autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
+BuildRequires:	epics-base sequencer autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
+Requires:		epics-base sequencer autosave iocStats sscan calc asyn busy mca area-detector-support area-detector-core
 
 %description
 DXP detectors electronics support for EPICS
@@ -64,9 +64,11 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/bin/linux-x86_64
 %dir %{epics_prefix}/configure
 %dir %{epics_prefix}/dbd
+%dir %{epics_prefix}/db
 %dir %{epics_prefix}/lib
 %dir %{epics_prefix}/lib/linux-x86_64
 %dir %{epics_prefix}/op
+%dir %{epics_prefix}/op/bob
 %dir %{epics_prefix}/op/adl
 %dir %{epics_prefix}/op/edl
 %dir %{epics_prefix}/op/opi
@@ -76,12 +78,14 @@ rm -rf %{buildroot}
 %{epics_prefix}/bin/linux-x86_64/*
 %{epics_prefix}/configure/*
 %{epics_prefix}/dbd/*
+%{epics_prefix}/db/*
 %{epics_prefix}/include/*
 %{epics_prefix}/lib/linux-x86_64/*
 %{epics_prefix}/op/adl/*
 %{epics_prefix}/op/edl/*
 %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/ui/*
+%{epics_prefix}/op/bob/*
 
 %{_libdir}/*
 %{_bindir}/*

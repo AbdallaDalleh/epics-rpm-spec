@@ -87,6 +87,8 @@ rm -rf %{buildroot}
 
 %{_libdir}/*
 
+%exclude %{epics_prefix}/op/ui/.gitignore
+
 %changelog
 * Sun May 09 2021 Abdalla Al-Dalleh 2.11-4
   - New build structure.

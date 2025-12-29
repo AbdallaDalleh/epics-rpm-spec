@@ -86,6 +86,7 @@ rm -rf %{buildroot}
 %{epics_prefix}/op/opi/*
 %{epics_prefix}/op/bob/*
 %{epics_prefix}/op/ui/*
+%exclude %{epics_prefix}/op/ui/.gitignore
 
 %{_libdir}/*
 %{_bindir}/*

@@ -13,7 +13,7 @@ function build_rpm() {
 	[[ -z "$build" ]] && build=0
 
 	rpmbuild -ba --define "_version ${version}" --define "build_number ${build}" SPECS/${name}.spec # 2&>1 /dev/null
- 	sudo yum -y install $(ls -tr RPMS/x86_64/"$name"-"$version"* | grep -v debug | sort -u | tail -n-1)
+ 	sudo yum -y install $(ls -tr RPMS/x86_64/"$name"-"$version"* | grep -v debug | tail -n-1)
 }
 
 [[ "$#" -ne 1 && "$#" -ne 2 ]] && {

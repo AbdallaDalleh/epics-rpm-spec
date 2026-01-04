@@ -25,17 +25,23 @@ caQtDM is an MEDM replacement based on Qt
 %setup -q -n %{name}-%{_version}.%{build_number}
 
 %build
-export QWTVERSION=6.3.0
-export QWTHOME=/usr/local/qwt-${QWTVERSION}
+export QWTHOME=/usr/local/qwt-6.3.0
 export QWTINCLUDE=${QWTHOME}/include
 export QWTLIB=${QWTHOME}/lib
 export QWTLIBNAME=qwt
+export QWTVERSION=6.3.0
 export EPCIS_BASE=/opt/epics/base
 export EPICSEXTENSIONS=%{buildroot}%{epics_prefix}
 export QTDM_LIBINSTALL=%{buildroot}%{epics_prefix}/lib
 export QTDM_BININSTALL=%{buildroot}%{epics_prefix}/bin
 export PYTHONVERSION=3.9
+
+sudo mv /usr/bin/qmake /usr/bin/qmake-bck
+sudo cp /usr/bin/qmake-qt5 /usr/bin/qmake
+
 QTDM_PATH=%{buildroot} yes | ./caQtDM_BuildAll
+
+sudo mv /usr/bin/qmake-bck /usr/bin/qmake
 
 %install
 install -d %{buildroot}%{epics_prefix}/controlsystems
@@ -53,7 +59,13 @@ export EPICSEXTENSIONS=%{buildroot}%{epics_prefix}
 export QTDM_LIBINSTALL=%{buildroot}%{epics_prefix}
 export QTDM_BININSTALL=%{buildroot}%{epics_prefix}
 export PYTHONVERSION=3.9
+
+sudo mv /usr/bin/qmake /usr/bin/qmake-bck
+sudo cp /usr/bin/qmake-qt5 /usr/bin/qmake
+
 QTDM_PATH=%{buildroot} yes | ./caQtDM_Install
+
+sudo mv /usr/bin/qmake-bck /usr/bin/qmake
 
 for bin in caQtDM adl2ui edl2ui; do
 	mv     %{buildroot}%{epics_prefix}/$bin %{buildroot}%{_bindir}

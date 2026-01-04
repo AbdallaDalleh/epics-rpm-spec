@@ -37,6 +37,8 @@ export QWT_INCLUDE_PATH=${QWT_ROOT}/include
 export QE_TARGET_DIR=%{buildroot}/usr/local/epics-qt
 export LD_LIBRARY_PATH=/opt/epics/base/lib/${EPICS_HOST_ARCH}:${QWT_ROOT}/lib
 
+sed -i "s/don't/dont/g" qeframeworkSup/project/framework.pro
+
 make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
@@ -52,8 +54,11 @@ export QA_SKIP_BUILD_ROOT=1
 rm -rf %{buildroot}
 
 %files
+%exclude %dir /usr/local/epics-qt/configure/
+%exclude /usr/local/epics-qt/configure/*
 %defattr(-,root,root)
 %dir /usr/local/epics-qt
+%dir /usr/local/epics-qt/configure
 %dir /usr/local/epics-qt/lib
 %dir /usr/local/epics-qt/lib/%{epics_host}
 %dir /usr/local/epics-qt/lib/%{epics_host}/designer
@@ -62,9 +67,6 @@ rm -rf %{buildroot}
 /usr/local/epics-qt/include/*
 /usr/local/epics-qt/lib/%{epics_host}/libQEFramework.so
 /usr/local/epics-qt/lib/%{epics_host}/designer/libQEPlugin.so
-
-%exclude %dir /usr/local/epics-qt/configure
-%exclude /usr/local/epics-qt/configure/RELEASE
 
 %changelog
 

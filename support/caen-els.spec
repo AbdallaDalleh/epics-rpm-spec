@@ -1,24 +1,24 @@
 # 
-# IOC statistics EPICS support
+# CAEN-ELS Easy driver support for EPICS
 #
 # Author: Abdalla Al-Dalleh <abdalla.ahmad@sesame.org.jo>
 #
 
-%global epics_prefix /opt/epics/support/iocstats
+%global epics_prefix /opt/epics/support/caen-els
 
-Name:			iocStats
+Name:			caen-els
 Version:		%{_version}
 Release:		%{build_number}%{?dist}
-Summary:		IOC Stats support for EPICS
+Summary:		CAEN-ELS driver support for EPICS
 Group:			Applications/Engineering
 License:		GPL+
 URL:			https://epics.anl.gov
 Source0:		%{name}-%{_version}.%{build_number}.tar.gz
-BuildRequires:	epics-base sequencer python3
-Requires:		epics-base sequencer python3
+BuildRequires:	epics-base asyn
+Requires:		epics-base asyn
 
 %description
-IOC Stats support for EPICS
+CAEN-ELS PS driver support for EPICS
 
 %prep
 %setup -q -n %{name}-%{_version}.%{build_number}
@@ -27,10 +27,12 @@ IOC Stats support for EPICS
 
 
 %install
+shopt -s extglob
+
 export EPICS_HOST_ARCH=linux-x86_64
 export LD_LIBRARY_PATH=%{buildroot}%{epics_prefix}/lib/${EPICS_HOST_ARCH}
 
-make -C "%{_builddir}/%{?buildsubdir}" \
+make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \
 INSTALL_LOCATION="%{buildroot}%{epics_prefix}" \
@@ -41,16 +43,15 @@ SHRLIB_PERMISSIONS=755
 
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_bindir}
-install -d %{buildroot}%{epics_prefix}/op
+install -d %{buildroot}%{epics_prefix}/opi
 
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
-mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}
+mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/!(test) %{buildroot}%{_bindir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64/
-cp -a %{_builddir}/%{?buildsubdir}/op/* %{buildroot}%{epics_prefix}/op
+cp -a %{_builddir}/%{?buildsubdir}/opi/!(Makefile) %{buildroot}%{epics_prefix}/opi
 
 export QA_SKIP_BUILD_ROOT=1
-sed -i "s/python/python3/" %{buildroot}%{_bindir}/iocReleaseCreateDb.py
 
 %clean
 rm -rf %{buildroot}
@@ -66,34 +67,18 @@ rm -rf %{buildroot}
 %dir %{epics_prefix}/dbd
 %dir %{epics_prefix}/lib
 %dir %{epics_prefix}/lib/linux-x86_64
-%dir %{epics_prefix}/op/edl
-%dir %{epics_prefix}/op
-%dir %{epics_prefix}/op/adl
-%dir %{epics_prefix}/op/edl
-%dir %{epics_prefix}/op/opi
-%dir %{epics_prefix}/op/ui
-%dir %{epics_prefix}/op/bob
-%dir %{epics_prefix}/include
-%dir %{epics_prefix}/include/os
-%dir %{epics_prefix}/include/os/Linux/
+%dir %{epics_prefix}/opi
 
 %{epics_prefix}/bin/linux-x86_64/*
 %{epics_prefix}/configure/*
 %{epics_prefix}/db/*
 %{epics_prefix}/dbd/*
-%{epics_prefix}/include/os/Linux/*
 %{epics_prefix}/lib/linux-x86_64/*
-%{epics_prefix}/edl/*
-%{epics_prefix}/op/adl/*
-%{epics_prefix}/op/edl/*
-%{epics_prefix}/op/opi/*
-%{epics_prefix}/op/ui/*
-%{epics_prefix}/op/bob/*
-%{epics_prefix}/op/Makefile
+%{epics_prefix}/opi/*
 
 %{_libdir}/*
 %{_bindir}/*
 
 %changelog
-* Sun May 09 2021 Abdalla Al-Dalleh 3.1.15
+* Sun May 12 2024 Abdalla Al-Dalleh 0.0-1
   - New build sequence.

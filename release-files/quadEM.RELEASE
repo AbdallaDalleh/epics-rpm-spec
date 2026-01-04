@@ -1,0 +1,4 @@
+
+ASYN = /opt/epics/support/asyn
+ADCORE = /opt/epics/support/areaDetector/core
+EPICS_BASE = /opt/epics/base

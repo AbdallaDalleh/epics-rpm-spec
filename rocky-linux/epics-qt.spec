@@ -37,8 +37,6 @@ export QWT_INCLUDE_PATH=${QWT_ROOT}/include
 export QE_TARGET_DIR=%{buildroot}/usr/local/epics-qt
 export LD_LIBRARY_PATH=/opt/epics/base/lib/${EPICS_HOST_ARCH}:${QWT_ROOT}/lib
 
-sed -i "s/don't/dont/g" qeframeworkSup/project/framework.pro
-
 make -C "%{_builddir}/%{?buildsubdir}" %{?_smp_mflags} \
 LINKER_USE_RPATH=NO \
 SHRLIB_VERSION=%{version} \

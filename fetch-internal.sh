@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 set -e
 
@@ -79,7 +79,7 @@ function build() {
             2> ./logs/"${module}"-"$_version"-stderr-$(date +"%H%M-%d%m%Y").txt
 
     rpm_file=$(ls -1 RPMS/x86_64/"$module"* | grep -v debug)
-    sudo dnf -y install "$rpm_file" > /dev/null # 2>&1
+    sudo dnf -y install "$rpm_file" # > /dev/null # 2>&1
 }
 
 # shellcheck source=./site-config.sh

@@ -54,16 +54,17 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root)
 %dir /usr/local/epics-qt
-%dir /usr/local/epics-qt/configure
 %dir /usr/local/epics-qt/lib
 %dir /usr/local/epics-qt/lib/%{epics_host}
 %dir /usr/local/epics-qt/lib/%{epics_host}/designer
 %dir /usr/local/epics-qt/include
 
-/usr/local/epics-qt/configure/RELEASE
 /usr/local/epics-qt/include/*
 /usr/local/epics-qt/lib/%{epics_host}/libQEFramework.so
 /usr/local/epics-qt/lib/%{epics_host}/designer/libQEPlugin.so
+
+%exclude %dir /usr/local/epics-qt/configure
+%exclude /usr/local/epics-qt/configure/RELEASE
 
 %changelog
 

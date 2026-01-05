@@ -113,12 +113,8 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/arv-test-*
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
-# %{_mandir}/man1/arv-tool-0.8.1.gz
-# %{_mandir}/man1/arv-test-*.1.gz
-# %{_mandir}/man1/arv-camera-test-*.1.gz
 
 %files devel
-# %{_datadir}/doc/%{name}
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0/*
@@ -129,7 +125,6 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/org.aravis.viewer-*.desktop
 %{_datadir}/metainfo/org.aravis.viewer-*.metainfo.xml
-# %{_mandir}/man1/arv-viewer-*.1.gz
 
 %files gstreamer1
 %{_libdir}/gstreamer-1.0/*

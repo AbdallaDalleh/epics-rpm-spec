@@ -2,11 +2,11 @@
 %define debug_package %{nil}
 
 Name:		pylon-sdk
-Version:	7.2
-Release:	1%{?dist}
+Version:	%{_version}
+Release:	%{build_number}%{?dist}
 Summary:	Pylon SDK for Basler cameras
 License:	GPL+
-Source0:    pylon-sdk-7.2.1.tar.gz
+Source0:    %{name}-%{version}.%{build_number}.tar.xz
 
 # BuildRequires: qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-doc qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-mysql qt5-qtbase-odbc qt5-qtbase-postgresql qt5-qtbase-private-devel qt5-qtbase-static qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-doc qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
 # Requires: qt5-qtbase qt5-qtbase-common qt5-qtbase-devel qt5-qtbase-doc qt5-qtbase-examples qt5-qtbase-gui qt5-qtbase-mysql qt5-qtbase-odbc qt5-qtbase-postgresql qt5-qtbase-private-devel qt5-qtbase-static qt5-qttools qt5-qttools-common qt5-qttools-devel qt5-qttools-doc qt5-qttools-examples qt5-qttools-libs-designer qt5-qttools-libs-designercomponents qt5-qttools-libs-help qt5-qttools-static
@@ -17,7 +17,7 @@ Provides:   libAppCoreComponents.so.1()(64bit) libCameraPoolComponents.so.1()(64
 Pylon SDK for Basler Cameras
 
 %prep
-%setup -q -n pylon-sdk-7.2.1
+%setup -q -n %{name}-%{version}.%{build_number}
 
 %build
 # Nothing to build, it is a pre-built SDK.

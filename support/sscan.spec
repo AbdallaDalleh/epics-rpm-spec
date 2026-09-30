@@ -45,6 +45,8 @@ install -d %{buildroot}%{epics_prefix}/op
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 cp -a  %{_builddir}/%{?buildsubdir}/sscanApp/op/* %{buildroot}%{epics_prefix}/op
+cp -a  %{_builddir}/%{?buildsubdir}/sscanApp/Db/*.req %{buildroot}%{epics_prefix}/db
+cp -a  %{_builddir}/%{?buildsubdir}/docs/*.req %{buildroot}%{epics_prefix}/db
 rm -f  %{buildroot}%{epics_prefix}/op/Makefile
 
 export QA_SKIP_BUILD_ROOT=1

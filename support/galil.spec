@@ -8,12 +8,12 @@
 
 Name:		galil
 Version:	%{_version}
-Release:	%{build_number}%{?dist}
+Release:	1%{?dist}
 Summary:	Galil motion control driver for EPICS
 Group:		Applications/Engineering
 License:	GPL+
 URL:		https://epics.anl.gov
-Source0:	%{name}-%{_version}.%{build_number}.tar.gz
+Source0:	%{name}-%{_version}.tar.gz
 BuildRequires:	epics-base autosave sequencer sscan calc asyn busy motor
 Requires:	epics-base autosave sequencer sscan calc asyn busy motor
 
@@ -21,7 +21,7 @@ Requires:	epics-base autosave sequencer sscan calc asyn busy motor
 Galil motion control driver for EPICS
 
 %prep
-%setup -q -n %{name}-%{_version}.%{build_number}
+%setup -q -n %{name}-%{_version}
 
 %build
 
@@ -44,12 +44,14 @@ SHRLIB_PERMISSIONS=755
 install -d %{buildroot}%{_libdir}
 install -d %{buildroot}%{_bindir}
 install -d %{buildroot}%{epics_prefix}/op
+install -d %{buildroot}%{epics_prefix}/db
 
 mv %{buildroot}%{epics_prefix}/lib/linux-x86_64/* %{buildroot}%{_libdir}
 mv %{buildroot}%{epics_prefix}/bin/linux-x86_64/* %{buildroot}%{_bindir}
 ln -sr %{buildroot}%{_libdir}/* %{buildroot}%{epics_prefix}/lib/linux-x86_64/
 ln -sr %{buildroot}%{_bindir}/* %{buildroot}%{epics_prefix}/bin/linux-x86_64/
 cp -a %{_builddir}/%{?buildsubdir}/GalilSup/op/!(Makefile) %{buildroot}%{epics_prefix}/op
+cp -a %{_builddir}/%{?buildsubdir}/GalilSup/Db/*.req %{buildroot}%{epics_prefix}/db
 
 export QA_SKIP_BUILD_ROOT=1
 
